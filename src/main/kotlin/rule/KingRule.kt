@@ -1,7 +1,6 @@
-
+package rule
 import board.Board
-import src.validator.*
-import validator.Movement
+import validator.*
 
 class KingRule : Rule {
 

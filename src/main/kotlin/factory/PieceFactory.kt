@@ -1,3 +1,19 @@
+package factory
+
+import piece.Bishop
+import rule.BishopRule
+import piece.King
+import rule.KingRule
+import piece.Knight
+import rule.KnightRule
+import piece.Pawn
+import rule.PawnRule
+import piece.PieceColor
+import piece.Queen
+import rule.QueenRule
+import piece.Rook
+import RookRule
+import piece.Piece
 
 class PieceFactory {
 

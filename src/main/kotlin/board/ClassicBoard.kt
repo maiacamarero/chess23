@@ -1,8 +1,8 @@
 package board
 
-import Piece
+import piece.Piece
 import Position
-import src.exception.PieceNotFoundException
+import exception.PieceNotFoundException
 
 class ClassicBoard(private val sizeX : Int, private val sizeY : Int, private val piecesPositions : Map<Position, Piece>) : Board {
 
@@ -28,6 +28,6 @@ class ClassicBoard(private val sizeX : Int, private val sizeY : Int, private val
                 return i
             }
         }
-        throw PieceNotFoundException("Piece not found")
+        throw PieceNotFoundException("piece.Piece not found")
     }
 }

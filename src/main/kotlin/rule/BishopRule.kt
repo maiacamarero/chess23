@@ -1,6 +1,7 @@
-
+package rule
+import validator.SameTeamValidator
 import board.Board
-import src.validator.DiagonalMovementValidator
+import validator.DiagonalMovementValidator
 import validator.PiecesInPathValidator
 import validator.Movement
 

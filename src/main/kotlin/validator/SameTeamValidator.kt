@@ -1,7 +1,6 @@
-
+package validator
 import board.Board
-import src.validator.Validator
-import validator.Movement
+import piece.Piece
 
 class SameTeamValidator : Validator {
 

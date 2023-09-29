@@ -1,5 +1,6 @@
 
 import board.Board
+import rule.Rule
 import validator.Movement
 
 class RookRule : Rule {

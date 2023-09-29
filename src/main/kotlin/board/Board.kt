@@ -1,6 +1,6 @@
 package board
 
-import Piece
+import piece.Piece
 import Position
 
 interface Board {

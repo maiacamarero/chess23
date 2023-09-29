@@ -1,4 +1,4 @@
-package src.validator
+package validator
 
 import Position
 import board.Board

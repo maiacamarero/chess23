@@ -1,4 +1,6 @@
-
+package rule
+import Position
+import validator.SameTeamValidator
 import board.Board
 import validator.Movement
 import java.lang.Math.abs

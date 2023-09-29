@@ -1,4 +1,4 @@
-
+package rule
 import board.Board
 import validator.Movement
 

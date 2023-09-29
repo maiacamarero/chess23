@@ -1,3 +1,6 @@
+package piece
+
+import rule.Rule
 
 class Queen(private val id: String, private val pieceColor: PieceColor, private val ruleList: List<Rule>) : Piece {
 

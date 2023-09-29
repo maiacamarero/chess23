@@ -1,6 +1,6 @@
 package validator
 
-import Piece
+import piece.Piece
 import Position
 
 class Movement(private val piece : Piece, private val finalPosition : Position) {

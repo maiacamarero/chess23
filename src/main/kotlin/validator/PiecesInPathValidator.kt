@@ -1,9 +1,8 @@
 package validator
 
-import Piece
+import piece.Piece
 import Position
 import board.Board
-import src.validator.Validator
 import java.lang.Math.abs
 
 class PiecesInPathValidator : Validator {
