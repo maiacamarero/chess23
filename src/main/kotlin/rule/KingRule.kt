@@ -1,6 +1,7 @@
 
 import board.Board
 import src.validator.*
+import validator.Movement
 
 class KingRule : Rule {
 

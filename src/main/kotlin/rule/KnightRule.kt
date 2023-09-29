@@ -1,6 +1,6 @@
 
 import board.Board
-import src.validator.*
+import validator.Movement
 import java.lang.Math.abs
 
 class KnightRule : Rule {

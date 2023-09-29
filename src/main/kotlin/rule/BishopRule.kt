@@ -1,9 +1,8 @@
 
 import board.Board
 import src.validator.DiagonalMovementValidator
-import src.validator.PiecesInPathValidator
-import src.validator.Movement
-import src.validator.SameTeamValidator
+import validator.PiecesInPathValidator
+import validator.Movement
 
 class BishopRule : Rule {
 
