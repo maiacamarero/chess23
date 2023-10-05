@@ -1,0 +1,3 @@
+package validator.results
+
+sealed interface ValidatorResult

@@ -12,7 +12,7 @@ import piece.PieceColor
 import piece.Queen
 import rule.QueenRule
 import piece.Rook
-import RookRule
+import rule.RookRule
 import piece.Piece
 
 class PieceFactory {
@@ -21,7 +21,6 @@ class PieceFactory {
         private var id : Int = 0
 
         fun createKing(pieceColor: PieceColor) : Piece {
-
             return King(id++.toString(), pieceColor, listOf(KingRule()))
         }
 
