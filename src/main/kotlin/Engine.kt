@@ -17,7 +17,6 @@ class Engine() {
     private val boardFactory = BoardFactory()
     private val board = boardFactory.createClassicBoard()
     private val movementStrategy = MovementStrategy()
-//    val turnStrategy
 
     fun init() : InitialGameState {
         chooseConfiguration()
@@ -28,22 +27,17 @@ class Engine() {
     fun getBoard(): Board{
         return board
     }
-
-//    private var initialColor: PieceColor  EL GAME MANAGER O ALGO ASI DEBERIA SABER DE QUIEN ES EL TURNO
-//    LOS STATES PUEDEN SER INVALID MOVE SI EL MOVIMIENTO ES INVALIDO POR ALGUN MOTIVO O GAME STATE SI ES VALIDO
     fun applyMove(movement: Movement) : GameState {
-
         val pieceToMove : Piece = movement.getPiece()
         val turnStrategy : TurnStrategy = RegularTurnStrategy(pieceToMove.getPieceColor())
-        val fromPosition : Position = board.getPositionByPiece(pieceToMove)
         val toPosition : Position = movement.getFinalPosition()
-    return if (pieceToMove.getPieceColor() != turnStrategy.getCurrentColor()){
-        InvalidMovementState("Es el turno del color " + turnStrategy.getCurrentColor())
-    }else{
-        val moveTo : Boolean = movementStrategy.moveTo(pieceToMove, toPosition, board)
-        println(moveTo)
-        NewGameState(board.getPiecesPositions(), turnStrategy.advanceTurn().getCurrentColor())
-    }
+        return if (pieceToMove.getPieceColor() != turnStrategy.getCurrentColor()){
+            InvalidMovementState("Es el turno del color " + turnStrategy.getCurrentColor())
+        }else{
+            val moveTo : Boolean = movementStrategy.moveTo(pieceToMove, toPosition, board)
+            println(moveTo)
+            NewGameState(board.getPiecesPositions(), turnStrategy.advanceTurn().getCurrentColor())
+        }
     }
 
     private fun chooseConfiguration() {
