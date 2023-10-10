@@ -9,5 +9,8 @@ interface Board {
     fun getPiecesPositions() : Map<Position, Piece>
     fun isInBounds(position: Position) : Boolean
     fun getPositionByPiece(piece: Piece) : Position
-//    fun getPositions() : List<Position>
+    fun getPositions() : List<Position>
+
+    fun getPieceByPosition(position: Position) : Piece?
+    fun getPosition(position: Position): Position
 }

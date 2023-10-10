@@ -3,13 +3,10 @@ package validator
 import piece.Piece
 import Position
 import board.Board
-import validator.results.FailureMovementResult
-import validator.results.SuccessfulMovementResult
-import validator.results.ValidatorResult
 import kotlin.math.abs
 
 class PiecesInPathValidator : Validator {
-    override fun validateMovement(board: Board, movement: Movement): ValidatorResult {
+    override fun validateMovement(board: Board, movement: Movement): Boolean {
         val pieceActualPosition : Position = board.getPositionByPiece(movement.getPiece())
         val difRow: Int = abs(pieceActualPosition.getY() - movement.getFinalPosition().getY())
         var path: Position
@@ -23,9 +20,9 @@ class PiecesInPathValidator : Validator {
             val pieceInPath : Piece? = board.getPiecesPositions().get(path)
             // si hay una pieza en el path devuelve true
             if (pieceInPath != null) {
-                return SuccessfulMovementResult("There's a piece in the path")
+                return true
             }
         }
-        return FailureMovementResult("There's no pieces in the path")
+        return false
     }
 }

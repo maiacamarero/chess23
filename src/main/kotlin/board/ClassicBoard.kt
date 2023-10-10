@@ -3,10 +3,11 @@ package board
 import Position
 import exception.PieceNotFoundException
 import piece.Piece
+import java.lang.RuntimeException
 
-class ClassicBoard(private val sizeX : Int, private val sizeY : Int, private val piecesPositions : Map<Position, Piece>) : Board {
+class ClassicBoard(private val sizeX : Int, private val sizeY : Int, private val piecesPositions : Map<Position, Piece>, private val positions : List<Position> ) : Board {
 
-    //private val positions : List<Position>
+
 
     override fun getX(): Int {
         return sizeX
@@ -33,17 +34,22 @@ class ClassicBoard(private val sizeX : Int, private val sizeY : Int, private val
         throw PieceNotFoundException("Piece not found")
     }
 
-//    override fun getPositions(): List<Position> {
-//        return positions
-//    }
-//
-//    fun fillPositions() : List<Position>{
-//        val positions1 : MutableList<Position> = mutableListOf()
-//        for (i in 1..sizeX) {
-//            for (j in 1..sizeY) {
-//                positions1.add(Position(i, j))
-//            }
-//        }
-//        return positions1.toList()
-//    }
+    override fun getPieceByPosition(position: Position) : Piece {
+        return piecesPositions.get(position)!!
+    }
+
+    override fun getPositions(): List<Position> {
+        return positions
+    }
+
+    override fun getPosition(position: Position) : Position {
+        for (i in positions){
+            if (i.getX() == position.getX() && i.getY() == position.getY()){
+                return i
+            }
+        }
+        return Position(0,0)
+    }
+
+
 }

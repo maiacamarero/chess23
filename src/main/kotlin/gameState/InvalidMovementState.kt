@@ -2,7 +2,8 @@ package gameState
 
 import piece.Piece
 import piece.PieceColor
+import sun.swing.plaf.synth.DefaultSynthStyle.StateInfo
 
-class InvalidMovementState(private val boardSize : Int, private val pieces : List<Piece>, private val color : PieceColor) {
+class InvalidMovementState(val reason : String) : GameState {
 
 }
