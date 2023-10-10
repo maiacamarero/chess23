@@ -14,6 +14,9 @@ class MovementStrategy {
                 val targetPiece : Piece? = board.getPiecesPositions()[toPosition]
                 if (targetPiece == null){
                     piecesPositionsCopy.remove(fromPosition)
+                }else {
+                    //come
+                    piecesPositionsCopy.remove(toPosition)
                 }
                 piecesPositionsCopy[toPosition] = pieceToMove
                 piecesPositionsCopy.toMap()

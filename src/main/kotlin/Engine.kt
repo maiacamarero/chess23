@@ -18,7 +18,7 @@ class Engine {
     private val movementStrategy = MovementStrategy()
 
     fun init() : InitialGameState {
-        chooseConfiguration()
+        //chooseConfiguration()
         val turnStrategy : TurnStrategy = RegularTurnStrategy(PieceColor.WHITE)
         return InitialGameState(board.getSizeX(), board.getPiecesPositions().values.toList(), turnStrategy)
     }
