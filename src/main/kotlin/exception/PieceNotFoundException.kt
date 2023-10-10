@@ -1,3 +1,3 @@
 package exception
 
-class PieceNotFoundException(message: String) : Exception(message) {}
+class PieceNotFoundException(message: String) : Exception(message)

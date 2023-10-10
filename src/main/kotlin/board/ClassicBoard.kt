@@ -1,19 +1,17 @@
 package board
 
 import Position
+import exception.PositionNotFoundException
 import exception.PieceNotFoundException
 import piece.Piece
-import java.lang.RuntimeException
 
 class ClassicBoard(private val sizeX : Int, private val sizeY : Int, private val piecesPositions : Map<Position, Piece>, private val positions : List<Position> ) : Board {
 
-
-
-    override fun getX(): Int {
+    override fun getSizeX(): Int {
         return sizeX
     }
 
-    override fun getY(): Int {
+    override fun getSizeY(): Int {
         return sizeY
     }
 
@@ -35,7 +33,7 @@ class ClassicBoard(private val sizeX : Int, private val sizeY : Int, private val
     }
 
     override fun getPieceByPosition(position: Position) : Piece {
-        return piecesPositions.get(position)!!
+        return piecesPositions[position]!!
     }
 
     override fun getPositions(): List<Position> {
@@ -48,8 +46,6 @@ class ClassicBoard(private val sizeX : Int, private val sizeY : Int, private val
                 return i
             }
         }
-        return Position(0,0)
+        throw PositionNotFoundException("Position not found")
     }
-
-
 }

@@ -20,9 +20,9 @@ class PawnRule : Rule {
         val pieceActualPosition : Position = board.getPositionByPiece(movement.getPiece())
         val incrementByColor : Int = if (movement.getPiece().getPieceColor().equals(PieceColor.WHITE)){ -1 } else 1
         val boardLimit : Int = if (movement.getPiece().getPieceColor().equals(PieceColor.WHITE)){
-            board.getY() -1
+            board.getSizeY() -1
         }else{
-            (board.getY() - (board.getY() - 2))
+            (board.getSizeY() - (board.getSizeY() - 2))
         }
         // movimiento normal, avanzan 1 para adelante
         if (verticalMovementValidator.validateMovement(board, movement)){

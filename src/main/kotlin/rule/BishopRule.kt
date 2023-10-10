@@ -17,9 +17,9 @@ class BishopRule : Rule {
                 return FailureRuleResult("No puede comer una pieza del mismo color.")
             }
             // el alfil no salta piezas
-            if (!piecesInPathValidator.validateMovement(board, movement)){
-                return SuccessfulRuleResult("Movimiento valido.")
-            }
+            return if (piecesInPathValidator.validateMovement(board, movement)){
+                FailureRuleResult("El alfil no salta piezas")
+            }else SuccessfulRuleResult("Movimiento valido")
         }
         return FailureRuleResult("No es movimiento diagonal.")
     }

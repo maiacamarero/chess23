@@ -11,22 +11,18 @@ import turnStrategy.TurnStrategy
 import validator.Movement
 import java.util.*
 
-class Engine() {
+class Engine {
 
     private val sc = Scanner(System.`in`)
-    private val boardFactory = BoardFactory()
-    private val board = boardFactory.createClassicBoard()
+    private val board = BoardFactory.createInitClassicBoard()
     private val movementStrategy = MovementStrategy()
 
     fun init() : InitialGameState {
         chooseConfiguration()
         val turnStrategy : TurnStrategy = RegularTurnStrategy(PieceColor.WHITE)
-        return InitialGameState(board.getX(), board.getPiecesPositions().values.toList(), turnStrategy)
+        return InitialGameState(board.getSizeX(), board.getPiecesPositions().values.toList(), turnStrategy)
     }
 
-    fun getBoard(): Board{
-        return board
-    }
     fun applyMove(movement: Movement) : GameState {
         val pieceToMove : Piece = movement.getPiece()
         val turnStrategy : TurnStrategy = RegularTurnStrategy(pieceToMove.getPieceColor())
@@ -34,9 +30,8 @@ class Engine() {
         return if (pieceToMove.getPieceColor() != turnStrategy.getCurrentColor()){
             InvalidMovementState("Es el turno del color " + turnStrategy.getCurrentColor())
         }else{
-            val moveTo : Boolean = movementStrategy.moveTo(pieceToMove, toPosition, board)
-            println(moveTo)
-            NewGameState(board.getPiecesPositions(), turnStrategy.advanceTurn().getCurrentColor())
+            val newBoard : Board = movementStrategy.moveTo(pieceToMove, toPosition, board)
+            NewGameState(newBoard.getPiecesPositions(), turnStrategy.advanceTurn().getCurrentColor())
         }
     }
 
@@ -53,5 +48,9 @@ class Engine() {
                 false
             }
         }
+    }
+
+    fun getBoard(): Board{
+        return board
     }
 }
