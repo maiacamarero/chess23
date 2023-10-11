@@ -3,9 +3,6 @@ package piece
 import Engine
 import Position
 import gameState.NewGameState
-import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.TestInstance
 import validator.Movement
 import kotlin.test.assertEquals
 import kotlin.test.Test
@@ -13,13 +10,6 @@ import kotlin.test.assertContains
 
 class PawnTest{
 
-//    @BeforeEach
-//    fun setUp(){
-//        val engine = Engine()
-//        engine.init()
-//    }
-//
-//
     @Test
     fun validPawnInitialMoveTest(){
         val engine = Engine()
