@@ -64,7 +64,7 @@ class BoardFactory {
                 }
             }
 
-            return ClassicBoard(8, 8, piecesPositions, positions)
+            return ClassicBoard(8, 8, piecesPositions.toMap(), positions)
         }
 
         fun createNewClassicBoard(piecesPositions : Map<Position, Piece>, board: Board): Board {
