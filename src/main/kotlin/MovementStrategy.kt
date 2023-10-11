@@ -1,11 +1,16 @@
 import board.Board
+import gameState.GameState
+import gameState.NewGameState
 import piece.Piece
 import rule.Rule
+import turnStrategy.RegularTurnStrategy
+import turnStrategy.TurnStrategy
 import validator.Movement
 
 class MovementStrategy {
 
     fun moveTo(pieceToMove: Piece, toPosition: Position, board: Board): Board{
+
         val piecesPositionsCopy : MutableMap<Position, Piece> = board.getPiecesPositions().toMutableMap()
         val fromPosition : Position = board.getPositionByPiece(pieceToMove)
         val ruleList : List<Rule> = pieceToMove.getRuleList()

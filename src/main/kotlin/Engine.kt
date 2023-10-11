@@ -1,5 +1,6 @@
 
 import board.Board
+import exception.PieceNotFoundException
 import piece.Piece
 import piece.PieceColor
 import gameState.GameState
@@ -14,13 +15,15 @@ import java.util.*
 class Engine {
 
     private val sc = Scanner(System.`in`)
-    private val board = BoardFactory.createInitClassicBoard()
+    private val historicalBoards : MutableList<Board> = mutableListOf()
     private val movementStrategy = MovementStrategy()
 
     fun init() : InitialGameState {
         //chooseConfiguration()
+        val board = BoardFactory.createInitialClassicBoard()
+        historicalBoards.add(board)
         val turnStrategy : TurnStrategy = RegularTurnStrategy(PieceColor.WHITE)
-        return InitialGameState(board.getSizeX(), board.getPiecesPositions().values.toList(), turnStrategy)
+        return InitialGameState(board.getSizeX(), board.getPiecesPositions(), turnStrategy)
     }
 
     fun applyMove(movement: Movement) : GameState {
@@ -30,9 +33,14 @@ class Engine {
         return if (pieceToMove.getPieceColor() != turnStrategy.getCurrentColor()){
             InvalidMovementState("Es el turno del color " + turnStrategy.getCurrentColor())
         }else{
-            val newBoard : Board = movementStrategy.moveTo(pieceToMove, toPosition, board)
-            NewGameState(newBoard.getPiecesPositions(), turnStrategy.advanceTurn().getCurrentColor())
+            val newBoard : Board = movementStrategy.moveTo(pieceToMove, toPosition, getBoard(historicalBoards, historicalBoards.size))
+            historicalBoards.add(newBoard)
+            NewGameState(newBoard.getPiecesPositions(), turnStrategy.advanceTurn().getCurrentColor(), newBoard.getPositions())
         }
+    }
+
+    fun getBoard(historicalBoards : List<Board>, size : Int): Board{
+        return historicalBoards[size-1]
     }
 
     private fun chooseConfiguration() {
@@ -50,7 +58,10 @@ class Engine {
         }
     }
 
-    fun getBoard(): Board{
-        return board
+    fun getBoard() : Board{
+        for (board in historicalBoards){
+            return board
+        }
+        throw PieceNotFoundException("")
     }
 }

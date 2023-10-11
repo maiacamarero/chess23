@@ -1,17 +1,14 @@
 package gameState
 
+import Position
 import piece.Piece
 import piece.PieceColor
 import turnStrategy.TurnStrategy
 
-class InitialGameState(private val boardSize : Int, private val pieces : List<Piece>, private val color : TurnStrategy) {
+class InitialGameState(private val boardSize : Int, private val piecesPositions : Map<Position, Piece>, private val color : TurnStrategy) {
 
-    fun getBoardSize() : Int{
-        return boardSize
-    }
-
-    fun getPieces() : List<Piece>{
-        return pieces
+    fun getPiecesPositions() : Map<Position, Piece>{
+        return piecesPositions
     }
 
     fun getColor() : TurnStrategy{

@@ -9,7 +9,7 @@ import piece.PieceColor
 class BoardFactory {
 
     companion object {
-        fun createInitClassicBoard(): Board {
+        fun createInitialClassicBoard(): Board {
             val piecesPositions: MutableMap<Position, Piece> = mutableMapOf()
             val positions: List<Position> = fillPositions()
             for (position in positions) {
