@@ -1,6 +1,6 @@
 
 import board.Board
-import exception.PieceNotFoundException
+import exception.BoardDoesNotExistsException
 import piece.Piece
 import piece.PieceColor
 import gameState.GameState
@@ -33,13 +33,13 @@ class Engine {
         return if (pieceToMove.getPieceColor() != turnStrategy.getCurrentColor()){
             InvalidMovementState("Es el turno del color " + turnStrategy.getCurrentColor())
         }else{
-            val newBoard : Board = movementStrategy.moveTo(pieceToMove, toPosition, getBoard(historicalBoards, historicalBoards.size))
+            val newBoard : Board = movementStrategy.moveTo(pieceToMove, toPosition, getLastBoard(historicalBoards, historicalBoards.size))
             historicalBoards.add(newBoard)
             NewGameState(newBoard.getPiecesPositions(), turnStrategy.advanceTurn().getCurrentColor(), newBoard.getPositions())
         }
     }
 
-    fun getBoard(historicalBoards : List<Board>, size : Int): Board{
+    fun getLastBoard(historicalBoards : List<Board>, size : Int): Board{
         return historicalBoards[size-1]
     }
 
@@ -59,9 +59,6 @@ class Engine {
     }
 
     fun getBoard() : Board{
-        for (board in historicalBoards){
-            return board
-        }
-        throw PieceNotFoundException("")
+        return historicalBoards[historicalBoards.size-1]
     }
 }

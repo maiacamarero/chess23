@@ -17,6 +17,7 @@ class PiecesInPathValidator : Validator {
                 pieceActualPosition.getY() + i * ((movement.getFinalPosition().getY() - pieceActualPosition.getY())
                         / difRow)
             )
+            path = board.getPosition(path)
             val pieceInPath : Piece? = board.getPiecesPositions().get(path)
             // si hay una pieza en el path devuelve true
             if (pieceInPath != null) {
